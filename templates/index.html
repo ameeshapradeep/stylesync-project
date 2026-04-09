@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StyleSync Premium</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, {{ palette.primary }}, #764ba2);
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .left {
+            width: 40%;
+            padding: 30px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .right {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* 🔥 PREMIUM CARD */
+        .card {
+            width: 300px;
+            padding: 25px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, white, #f3f3f3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: {{ palette.primary }};
+        }
+
+        .content {
+            margin-top: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* 🔥 FLOATING DOODLE */
+        .doodle-img {
+            width: 120px;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.4;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+        <h2>🎨 Customize</h2>
+
+        <form method="POST">
+            <input type="color" name="color">
+
+            <input type="text" name="title" placeholder="Title">
+
+            <textarea name="content" placeholder="Content"></textarea>
+
+            <select name="theme">
+                <option value="">Theme</option>
+                <option value="love">Love</option>
+                <option value="tech">Tech</option>
+                <option value="space">Space</option>
+                <option value="nature">Nature</option>
+            </select>
+
+            <input type="text" name="custom_url" placeholder="Image URL (optional)">
+
+            <select name="font">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier</option>
+            </select>
+
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+
+    <div class="right">
+
+        <div class="card" style="font-family: {{ font }}">
+
+            <div class="title">{{ title }}</div>
+
+            <div class="content">{{ content }}</div>
+
+            {% if doodle %}
+            <img src="{{ doodle }}" class="doodle-img">
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

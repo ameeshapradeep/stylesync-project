@@ -13,3 +13,4 @@ A customizable web app to generate themed cards with dynamic colors, fonts, and 
 - HTML/CSS
 
 ## Live Demo
+https://stylesync-project.onrender.com/
